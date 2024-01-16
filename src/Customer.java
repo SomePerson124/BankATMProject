@@ -8,6 +8,10 @@ public class Customer {
         this.pin = pin;
     }
 
+    public int getPin() {
+        return pin;
+    }
+
     public void setPin(int newPin) {
         this.pin = newPin;
     }
