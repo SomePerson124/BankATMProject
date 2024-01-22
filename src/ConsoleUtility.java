@@ -9,9 +9,4 @@ public class ConsoleUtility {
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
 
-    // CLEARSCREEN ONLY WORKS IN TERMINAL, NOT IN INTELLIJ'S RUN CONSOLE
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
 }

@@ -26,11 +26,11 @@ public class TransactionHistory {
                 zeroString = "000";
             }
             if (account == null) {
-                transactions += summary + ", " + type + zeroString + aTransactionsNum + ", " + "Status: " + status + "\n";
+                transactions += summary + ", " + ConsoleUtility.CYAN + type + zeroString + aTransactionsNum + ConsoleUtility.RESET + ", " + "Status: " + status + "\n";
             } else {
-                transactions += summary + ", " + type + zeroString + aTransactionsNum + ", " + "Status: " + status + ", " + account.getAccountName() + " account balance: $" + account.getCurrentBalance() + "\n";
+                transactions += summary + ", " + ConsoleUtility.CYAN + type + zeroString + aTransactionsNum + ConsoleUtility.RESET + ", " + "Status: " + status + ", " + account.getAccountName() + " account balance: $" + account.getCurrentBalance() + "\n";
             }
-            return type + zeroString + aTransactionsNum;
+            return ConsoleUtility.CYAN + type + zeroString + aTransactionsNum + ConsoleUtility.RESET;
         } else {
             sTransactionsNum++;
             if (sTransactionsNum > 999) {
@@ -43,11 +43,11 @@ public class TransactionHistory {
                 zeroString = "000";
             }
             if (account == null) {
-                transactions += summary + ", " + type + zeroString + sTransactionsNum + ", " + "Status: " + status + "\n";
+                transactions += summary + ", " + ConsoleUtility.CYAN + type + zeroString + sTransactionsNum + ConsoleUtility.RESET + ", " + "Status: " + status + "\n";
             } else {
-                transactions += summary + ", " + type + zeroString + sTransactionsNum + ", " + "Status: " + status + ", " + account.getAccountName() + " account balance: $" + account.getCurrentBalance() + "\n";
+                transactions += summary + ", " + ConsoleUtility.CYAN + type + zeroString + sTransactionsNum + ConsoleUtility.RESET + ", " + "Status: " + status + ", " + account.getAccountName() + " account balance: $" + account.getCurrentBalance() + "\n";
             }
-            return type + zeroString + sTransactionsNum;
+            return ConsoleUtility.CYAN + type + zeroString + sTransactionsNum + ConsoleUtility.RESET;
         }
     }
 

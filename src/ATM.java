@@ -30,6 +30,7 @@ public class ATM {
         scan.nextLine();
         customer = new Customer(name, pin);
         System.out.println();
+        System.out.println("Welcome, " + customer.getName() + "!");
         System.out.println("You are now a Customer!");
     }
 
@@ -45,7 +46,7 @@ public class ATM {
         int pin = scan.nextInt();
         scan.nextLine();
         while (customer.getPin() != pin) {
-            System.out.println("Incorrect Pin");
+            System.out.println(ConsoleUtility.RED + "Incorrect PIN" + ConsoleUtility.RESET);
             System.out.print("Please enter your PIN: ");
             pin = scan.nextInt();
             scan.nextLine();
@@ -68,7 +69,7 @@ public class ATM {
             scan.nextLine();
             System.out.println();
             while (option > 7 || option < 1) {
-                System.out.println("Invalid Option");
+                System.out.println(ConsoleUtility.RED + "Invalid option" + ConsoleUtility.RESET);
                 System.out.print("Choose an option: ");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -103,7 +104,7 @@ public class ATM {
             int account = scan.nextInt();
             System.out.println();
             while (account != 1 && account != 2) {
-                System.out.println("Invalid option");
+                System.out.println(ConsoleUtility.RED + "Invalid option" + ConsoleUtility.RESET);
                 System.out.print("Choose an account: ");
                 account = scan.nextInt();
                 System.out.println();
@@ -122,10 +123,11 @@ public class ATM {
                 }
                 System.out.println();
                 if (account == 1) {
-                    String summary = "Withdrew $" + amount + " from savings";
+                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from savings";
                     if (savings.getCurrentBalance() < amount) {
                         System.out.println("Insufficient Funds!");
                         System.out.println("You do not have enough money in your account to withdraw that amount");
+                        System.out.println("Withdrawal was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", savings));
                         System.out.println();
                     } else {
@@ -141,20 +143,21 @@ public class ATM {
                         System.out.println();
                         System.out.println(savings.numberOfBills(amount, twenties));
                         savings.withdraw(amount);
-                        System.out.println("Withdrawal was successful");
+                        System.out.println("Withdrawal was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                         System.out.println(summary);
                         System.out.println(savings.balanceMessage());
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", savings));
                     }
                 } else {
-                    String summary = "Withdrew $" + amount + " from checking";
+                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from checking";
                     if (checking.getCurrentBalance() < amount) {
                         System.out.println("Insufficient Funds!");
                         System.out.println("You do not have enough money in your account to withdraw that amount");
+                        System.out.println("Withdrawal was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", checking));
                         System.out.println();
                     } else {
-                        System.out.println("How many $20 bills do you want to receive? ");
+                        System.out.print("How many $20 bills do you want to receive? ");
                         int twenties = scan.nextInt();
                         scan.nextLine();
                         while (20 * twenties > amount) {
@@ -166,7 +169,7 @@ public class ATM {
                         System.out.println();
                         System.out.println(checking.numberOfBills(amount, twenties));
                         checking.withdraw(amount);
-                        System.out.println("Withdrawal was successful");
+                        System.out.println("Withdrawal was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                         System.out.println(summary);
                         System.out.println(checking.balanceMessage());
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", checking));
@@ -178,27 +181,29 @@ public class ATM {
                 scan.nextLine();
                 System.out.println();
                 if (account == 1) {
-                    String summary = "Deposited $" + amount + " into savings";
+                    String summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into savings";
                     if (amount > 0) {
                         savings.deposit(amount);
-                        System.out.println("Deposit was successful");
+                        System.out.println("Deposit was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                         System.out.println(summary);
                         System.out.println(savings.balanceMessage());
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", savings));
                     } else {
                         System.out.println("Deposit must be positive");
+                        System.out.println("Deposit was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", savings));
                     }
                 } else {
-                    String summary = "Deposited $" + amount + " into checking";
+                    String summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into checking";
                     if (amount > 0) {
                         checking.deposit(amount);
-                        System.out.println("Deposit was successful");
+                        System.out.println("Deposit was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                         System.out.println(summary);
                         System.out.println(checking.balanceMessage());
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", checking));
                     } else {
                         System.out.println("Deposit must be positive");
+                        System.out.println("Deposit was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", checking));
                     }
                 }
@@ -210,7 +215,7 @@ public class ATM {
             System.out.print("Which account is the transfer FROM: ");
             int account = scan.nextInt();
             while (account != 1 && account != 2) {
-                System.out.println("Invalid option");
+                System.out.println(ConsoleUtility.RED + "Invalid option" + ConsoleUtility.RESET);
                 System.out.print("Which account is the transfer FROM: ");
                 account = scan.nextInt();
             }
@@ -219,29 +224,31 @@ public class ATM {
             scan.nextLine();
             System.out.println();
             if (account == 1) {
-                String summary = "Transferred $" + amount + " from " + savings.getAccountName() + " to " + checking.getAccountName();
+                String summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + savings.getAccountName() + " to " + checking.getAccountName();
                 if (savings.getCurrentBalance() >= amount) {
                     savings.transfer(amount, checking);
-                    System.out.println("Transfer was successful");
+                    System.out.println("Transfer was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                     System.out.println(summary);
                     System.out.println(savings.balanceMessage());
                     System.out.println(checking.balanceMessage());
                     System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", savings));
                 } else {
-                    System.out.println("Transfer amount must not exceed current balance on account");
+                    System.out.println("Transfer amount must NOT exceed current balance on account");
+                    System.out.println("Transfer was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                     System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", savings));
                 }
             } else {
-                String summary = "Transferred $" + amount + " from " + checking.getAccountName() + " to " + savings.getAccountName();
+                String summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + checking.getAccountName() + " to " + savings.getAccountName();
                 if (checking.getCurrentBalance() >= amount) {
                     checking.transfer(amount, savings);
-                    System.out.println("Transfer was successful");
+                    System.out.println("Transfer was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
                     System.out.println(summary);
                     System.out.println(savings.balanceMessage());
                     System.out.println(checking.balanceMessage());
                     System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", checking));
                 } else {
-                    System.out.println("Transfer amount must not exceed current balance on account");
+                    System.out.println("Transfer amount must NOT exceed current balance on account");
+                    System.out.println("Transfer was " + ConsoleUtility.RED + "unsuccessful" + ConsoleUtility.RESET);
                     System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", checking));
                 }
             }
@@ -263,7 +270,7 @@ public class ATM {
             scan.nextLine();
             customer.setPin(newPIN);
             String summary = "Changed PIN";
-            System.out.println(summary);
+            System.out.println(ConsoleUtility.PURPLE + summary + ConsoleUtility.RESET);
             System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "S", "Successful", null));
         }
     }

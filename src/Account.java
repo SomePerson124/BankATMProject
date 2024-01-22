@@ -32,12 +32,12 @@ public class Account {
     }
 
     public String numberOfBills(int amount, int twenties) {
-        int fives = amount - twenties * 20;
-        return "You will receive " + twenties + " $20 bills and " + fives + " $5 bills";
+        int fives = (amount - twenties * 20) / 5;
+        return "You will receive " + ConsoleUtility.BLUE + twenties + ConsoleUtility.RESET + " $20 bills and " + ConsoleUtility.BLUE + fives + ConsoleUtility.RESET + " $5 bills";
     }
 
     public String balanceMessage() {
-        return accountName + " account: $" + currentBalance;
+        return accountName + " account: " + ConsoleUtility.YELLOW + "$" + currentBalance + ConsoleUtility.RESET;
     }
 
 }
