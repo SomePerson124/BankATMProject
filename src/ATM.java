@@ -123,7 +123,7 @@ public class ATM {
                 }
                 System.out.println();
                 if (account == 1) {
-                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from savings";
+                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " from savings";
                     if (savings.getCurrentBalance() < amount) {
                         System.out.println("Insufficient Funds!");
                         System.out.println("You do not have enough money in your account to withdraw that amount");
@@ -149,7 +149,7 @@ public class ATM {
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Successful", savings));
                     }
                 } else {
-                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from checking";
+                    String summary = "Withdrew " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " from checking";
                     if (checking.getCurrentBalance() < amount) {
                         System.out.println("Insufficient Funds!");
                         System.out.println("You do not have enough money in your account to withdraw that amount");
@@ -181,7 +181,12 @@ public class ATM {
                 scan.nextLine();
                 System.out.println();
                 if (account == 1) {
-                    String summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into savings";
+                    String summary = "";
+                    if (amount == (int) amount) {
+                        summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " into savings";
+                    } else {
+                        summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into savings";
+                    }
                     if (amount > 0) {
                         savings.deposit(amount);
                         System.out.println("Deposit was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
@@ -194,7 +199,12 @@ public class ATM {
                         System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", savings));
                     }
                 } else {
-                    String summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into checking";
+                    String summary  = "";
+                    if (amount == (int) amount) {
+                        summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " into checking";
+                    } else {
+                        summary = "Deposited " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " into checking";
+                    }
                     if (amount > 0) {
                         checking.deposit(amount);
                         System.out.println("Deposit was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
@@ -224,7 +234,12 @@ public class ATM {
             scan.nextLine();
             System.out.println();
             if (account == 1) {
-                String summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + savings.getAccountName() + " to " + checking.getAccountName();
+                String summary = "";
+                if (amount == (int) amount) {
+                    summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " from " + savings.getAccountName() + " to " + checking.getAccountName();
+                } else {
+                    summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + savings.getAccountName() + " to " + checking.getAccountName();
+                }
                 if (savings.getCurrentBalance() >= amount) {
                     savings.transfer(amount, checking);
                     System.out.println("Transfer was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);
@@ -238,7 +253,12 @@ public class ATM {
                     System.out.println("Transaction ID: " + transactionHistory.addTransaction(summary, "A", "Unsuccessful", savings));
                 }
             } else {
-                String summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + checking.getAccountName() + " to " + savings.getAccountName();
+                String summary = "";
+                if (amount == (int) amount) {
+                    summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + "0" + ConsoleUtility.RESET + " from " + checking.getAccountName() + " to " + savings.getAccountName();
+                } else {
+                    summary = "Transferred " + ConsoleUtility.YELLOW + "$" + amount + ConsoleUtility.RESET + " from " + checking.getAccountName() + " to " + savings.getAccountName();
+                }
                 if (checking.getCurrentBalance() >= amount) {
                     checking.transfer(amount, savings);
                     System.out.println("Transfer was " + ConsoleUtility.GREEN + "successful" + ConsoleUtility.RESET);

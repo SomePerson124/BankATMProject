@@ -37,7 +37,11 @@ public class Account {
     }
 
     public String balanceMessage() {
-        return accountName + " account: " + ConsoleUtility.YELLOW + "$" + currentBalance + ConsoleUtility.RESET;
+        if (currentBalance == (int) currentBalance) {
+            return accountName + " account: " + ConsoleUtility.YELLOW + "$" + currentBalance + "0" + ConsoleUtility.RESET;
+        } else {
+            return accountName + " account: " + ConsoleUtility.YELLOW + "$" + currentBalance + ConsoleUtility.RESET;
+        }
     }
 
 }
