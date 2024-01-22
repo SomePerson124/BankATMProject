@@ -1,3 +1,5 @@
+// Utility Class for colors
+
 public class ConsoleUtility {
     public static final String RESET = "\033[0m";      // Reset
     public static final String BLACK = "\033[0;30m";   // BLACK
