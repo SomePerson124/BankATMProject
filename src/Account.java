@@ -10,12 +10,34 @@ public class Account {
         this.customer = customer;
     }
 
-    public void withdraw() {
-
+    public double getCurrentBalance() {
+        return currentBalance;
     }
 
-    public void deposit() {
+    public String getAccountName() {
+        return accountName;
+    }
 
+    public void withdraw(int amount) {
+        currentBalance -= amount;
+    }
+
+    public void deposit(double amount) {
+        currentBalance += amount;
+    }
+
+    public void transfer(double amount, Account to) {
+        currentBalance -= amount;
+        to.currentBalance += amount;
+    }
+
+    public String numberOfBills(int amount, int twenties) {
+        int fives = amount - twenties * 20;
+        return "You will receive " + twenties + " $20 bills and " + fives + " $5 bills";
+    }
+
+    public String balanceMessage() {
+        return accountName + " account: $" + currentBalance;
     }
 
 }
